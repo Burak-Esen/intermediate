@@ -1,32 +1,15 @@
-from abc import ABC, abstractmethod
+class MyIterable:
+    def __init__(self, number):
+        self.l = [i for i in range(number)]
+
+    def __setitem__(self, key, value):
+        self.l[key] = value
+
+    def __getitem__(self, index):
+        return self.l[index]
 
 
-class AbsClass(ABC):
-    @abstractmethod
-    def accessData(self):
-        pass
-
-
-class GetJSON(AbsClass):
-    def accessData(self):
-        print("Data...")
-
-
-class GetXML(AbsClass):
-    def __init__(self, name):
-        self.name = name
-
-    def accessData(self):
-        print("Data...")
-
-    def __str__(self):
-        return "I'm " + self.name
-
-
-getter = GetXML("XML getter")
-getter.accessData()
-print(dir(GetXML))
-print(GetXML.__class__)
-print(type(GetXML))
-print("*" * 11)
-print(getter)
+a = MyIterable(10)
+print(a[5])
+for i in a:
+    print(i)
