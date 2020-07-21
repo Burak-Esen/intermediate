@@ -1,42 +1,32 @@
-class Animal:
+from abc import ABC, abstractmethod
+
+
+class AbsClass(ABC):
+    @abstractmethod
+    def accessData(self):
+        pass
+
+
+class GetJSON(AbsClass):
+    def accessData(self):
+        print("Data...")
+
+
+class GetXML(AbsClass):
     def __init__(self, name):
         self.name = name
-        print("An animal created")
 
-    def talk(self):
-        print("An animal talking")
+    def accessData(self):
+        print("Data...")
 
-
-class Dog(Animal):
-    def __init__(self, name):
-        super().__init__(name)
-        print("A dog created")
-
-    def talk(self):
-        print("Bark Bark")
+    def __str__(self):
+        return "I'm " + self.name
 
 
-class Cat(Animal):
-    def __init__(self, name):
-        super().__init__(name)
-        print("A cat created")
-
-    def talk(self):
-        print("Meuuww")
-
-
-d = Dog("Buddy")
-c = Cat("Kitty")
-
-c.talk()
-
-
-# print(isinstance(d, Animal))
-# print(isinstance(d, Dog))
-# print(isinstance(d, object))
-# print("*"*11)
-# print(issubclass(Animal,Dog))
-# print(issubclass(Dog,Animal))
-# print(issubclass(Dog, object))
-# print("*"*11)
-# print(Dog.mro())
+getter = GetXML("XML getter")
+getter.accessData()
+print(dir(GetXML))
+print(GetXML.__class__)
+print(type(GetXML))
+print("*" * 11)
+print(getter)
