@@ -3,10 +3,12 @@ class Calculator:
 
     def __init__(self):
         self.history = [0]
+        self.operationHistory =[]
 
     def add(self, number):
         res = number + self.history[-1]
         self.history.append(res)
+        self.operationHistory.append("+")
         return res
 
     def subtract(self, number):
