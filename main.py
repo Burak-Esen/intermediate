@@ -1,3 +1,5 @@
+from Math import aritmetic_functions
+
 class MyIterable:
     def __init__(self, number):
         self.l = [i for i in range(number)]
@@ -24,24 +26,23 @@ class MyIterable:
         print("I'm a MyIterable object")
 
     def __add__(self, other):
-        result = MyIterable(0).l
-        result.l = self.l+other.l
+        result = MyIterable(0)
+        result.l = self.l + other.l
         return result
 
+    def __gt__(self, other):
+        return sum(self.l) > sum(other.l)
 
 a = MyIterable(10)
-print(a[5])
-for i in a:
-    print(i)
+b = MyIterable(5)
+print(a+b)
+try:
+    print(b>=a)
+except:
+    print("An error occurred.")
+else:
+    print("Else Block")
 
-a.addItem(12)
 
-print(a[2:5])
-print(a)
-print(type(a))
-
-print("-"*15)
-
-print(len(a))
-
-a()
+if __name__=="__main__":
+    print("I'm Main")
