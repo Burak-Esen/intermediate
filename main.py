@@ -1,14 +1,9 @@
-def getNumber():
-    a = 0
-    while True:
-        try:
-            a = int(input("Enter a number: "))
-        except:
-            continue
-        else:
-            break
-
-    return a
+from classes.cards import Deck, Card
 
 
-print(getNumber())
+d1 = Deck()
+print(len(d1))
+print(d1)
+print("-" * 15)
+d1.shuffle()
+print(d1)
